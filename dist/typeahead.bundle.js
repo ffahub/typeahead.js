@@ -1721,7 +1721,8 @@
                     if (!canceled && rendered < that.limit) {
                         that.cancel = $.noop;
                         rendered += suggestions.length;
-                        that._append(query, suggestions.slice(0, that.limit - rendered));
+                        var idx = (that.limit > rendered) ? rendered : that.limit;
+                        that._append(query, suggestions.slice(0, idx));
                         that.async && that.trigger("asyncReceived", query);
                     }
                 }
